@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บ้านเช่าเลขที่ 999/158</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .house-icon {
+            width: 24px;
+            height: 24px;
+            color: #76B947;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #333;
+            margin: 0;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .amount {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .bank-info {
+            margin: 20px 0;
+        }
+
+        .bank-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .bank-logo img {
+            height: 30px;
+        }
+
+        .account-details {
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .copy-button {
+            border: none;
+            background: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .status {
+            color: #666;
+            font-size: 14px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <svg class="house-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+            <h1 class="title">บ้านเช่าเลขที่ 999/158</h1>
+        </div>
+        
+        <div class="subtitle">ครบกำหนดชำระค่าเช่าบ้าน</div>
+        <div class="subtitle">01 มกราคม 2568</div>
+        
+        <div class="amount">
+            ยอดชำระ
+            <div style="font-size: 24px; margin-top: 5px;">6,000 บาท</div>
+        </div>
+
+        <div class="bank-info">
+            <div>ธ.ทหารไทยธนชาต</div>
+            <div class="account-details">
+                ชื่อบัญชี
+                <div style="margin: 5px 0;">นายวสัณ เทศสีหา</div>
+            </div>
+            <div class="account-details">
+                เลขที่บัญชี
+                <div class="bank-logo">
+                    <svg width="50" height="20" viewBox="0 0 50 20">
+                        <text x="0" y="15" fill="#00A1E0" font-weight="bold">ttb</text>
+                    </svg>
+                    <span>612-255-4295</span>
+                    <button class="copy-button" onclick="copyToClipboard('612-255-4295')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="status">
+            ขออภัยหากชำระแล้ว
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('คัดลอกหมายเลขบัญชีแล้ว');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+    </script>
+</body>
+</html>
