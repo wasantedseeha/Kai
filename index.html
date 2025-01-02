@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-4">
+                    <h3 class="text-center mb-4">รายละเอียดบิล</h3>
+                    <div class="form-group">
+                        <label for="titleInput">ชื่อ</label>
+                        <input type="text" id="titleInput" class="form-control" placeholder="ใส่ชื่อ">
+                    </div>
+                    <div class="form-group">
+                        <label for="textInput">รายละเอียดบิล</label>
+                        <textarea id="textInput" class="form-control" rows="10" placeholder="ใส่รายละเอียดบิล"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="urlInput">ลิ้งค์บัญชีโอน</label>
+                        <input type="text" id="urlInput" class="form-control" placeholder="ใส่ลิ้งค์บัญชีโอน">
+                    </div>
+                    <button id="shareButton" class="btn btn-primary btn-block mt-4">ส่งบิล</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate input fields with query parameters
+            document.getElementById('titleInput').value = getQueryParam('title') || 'Default Title';
+            document.getElementById('textInput').value = getQueryParam('text') || 'Default Text';
+            document.getElementById('urlInput').value = getQueryParam('url') || window.location.origin;
+        });
+
+        document.getElementById('shareButton').addEventListener('click', async () => {
+            const title = document.getElementById('titleInput').value;
+            const text = document.getElementById('textInput').value;
+            const url = document.getElementById('urlInput').value;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: title,
+                        text: `${text}\n\n${url}`,  // Add new lines before the URL
+                    });
+                    console.log('Shared successfully');
+                } catch (error) {
+                    console.log('Sharing failed', error);
+                }
+            } else {
+                console.log('Web Share API not supported in this browser.');
+            }
+        });
+    </script>
+</body>
+</html>

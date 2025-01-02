@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายละเอียดบัญชี</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .account-details {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .account-details h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #333;
+        }
+        .account-details p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #555;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="account-details">
+        <h2>รายละเอียดบัญชี</h2>
+        <p>ธนาคาร: กรุงเทพ</p>
+        <p>เลขที่บัญชี: <span id="accountNumber">7470094967</span></p>
+        <p>ชื่อบัญชี: อริษา แสนสิทธิ์</p>
+        <button onclick="copyAccountNumber()">คัดลอกเลขบัญชี</button>
+    </div>
+
+    <script>
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById('accountNumber').textContent;
+
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = accountNumber;
+            document.body.appendChild(tempTextArea);
+
+            tempTextArea.select();
+            document.execCommand('copy');
+
+            document.body.removeChild(tempTextArea);
+
+            alert('คัดลอกเลขบัญชีเรียบร้อยแล้ว: ' + accountNumber);
+        }
+    </script>
+</body>
+</html>
